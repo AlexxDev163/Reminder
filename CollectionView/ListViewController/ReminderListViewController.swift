@@ -29,15 +29,39 @@ class ReminderListViewController: UICollectionViewController {
         snapshot.appendItems(reminders.map{ $0.id })
         dataSource.apply(snapshot)
         
+        updateSnapshot()
         collectionView.dataSource = dataSource
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let id = reminders[indexPath.item].id
+        showDetail(for: id)
+        return false
+    }
+    
+    func showDetail(for id: Reminder.ID) {
+          let reminder = reminder(for: id)
+        let vc = ReminderViewController(reminder: reminder)
+        navigationController?.pushViewController(vc, animated: true)
+      }
+
 
     private func listLayout() -> UICollectionViewCompositionalLayout{
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
         listConfiguration.showsSeparators = false
-        listConfiguration.backgroundColor = .clear
+        listConfiguration.backgroundColor = .systemGray6
         return UICollectionViewCompositionalLayout.list(using: listConfiguration)
         
     }
+    
+    func reminder(for id: Reminder.ID) -> Reminder {
+            let index = reminders.indexOfReminder(with: id)
+            return reminders[index]
+        }
+        
+        func update(_ reminder: Reminder, with id: Reminder.ID) {
+            let index = reminders.indexOfReminder(with: id)
+            reminders[index] = reminder
+        }
 }
 
