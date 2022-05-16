@@ -38,12 +38,12 @@ extension ReminderListViewController {
         cell.contentConfiguration = contentConfiguration
         
         var doneButtonConConfiguration = doneButtonConConfiguration(for: reminder)
-        doneButtonConConfiguration.tintColor = .systemGray6
+        doneButtonConConfiguration.tintColor = .placeholderText
         cell.accessories = [ .customView(configuration: doneButtonConConfiguration),.disclosureIndicator(displayed: .always) ]
         cell.accessibilityCustomActions = [ doneButtonAccessibilityAction(for: reminder) ]
         cell.accessibilityValue = reminder.isComplete ? reminderCompletedValue : reminderNotCompletedValue
-        var backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
-        backgroundConfiguration.backgroundColor = UIColor.systemGray2
+        let backgroundConfiguration = UIBackgroundConfiguration.listGroupedCell()
+//        backgroundConfiguration.backgroundColor = UIColor.systemGray2
         cell.backgroundConfiguration = backgroundConfiguration
     }
     

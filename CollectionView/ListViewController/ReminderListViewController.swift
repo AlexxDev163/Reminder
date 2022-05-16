@@ -49,7 +49,6 @@ class ReminderListViewController: UICollectionViewController {
     private func listLayout() -> UICollectionViewCompositionalLayout{
         var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
         listConfiguration.showsSeparators = false
-        listConfiguration.backgroundColor = .systemGray6
         return UICollectionViewCompositionalLayout.list(using: listConfiguration)
         
     }

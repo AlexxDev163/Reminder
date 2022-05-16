@@ -20,6 +20,7 @@
 		1014E29F282D90F100543F6A /* ReminderListViewController+Actions..swift in Sources */ = {isa = PBXBuildFile; fileRef = 1014E29E282D90F100543F6A /* ReminderListViewController+Actions..swift */; };
 		10AFD203283108DF00AB7823 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AFD202283108DF00AB7823 /* ReminderViewController.swift */; };
 		10AFD2062831178900AB7823 /* ReminderViewController+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AFD2052831178900AB7823 /* ReminderViewController+Row.swift */; };
+		10AFD2082832C27F00AB7823 /* ReminderViewController+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AFD2072832C27F00AB7823 /* ReminderViewController+Section.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		1014E29E282D90F100543F6A /* ReminderListViewController+Actions..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderListViewController+Actions..swift"; sourceTree = "<group>"; };
 		10AFD202283108DF00AB7823 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
 		10AFD2052831178900AB7823 /* ReminderViewController+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderViewController+Row.swift"; sourceTree = "<group>"; };
+		10AFD2072832C27F00AB7823 /* ReminderViewController+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderViewController+Section.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				10AFD202283108DF00AB7823 /* ReminderViewController.swift */,
 				10AFD2052831178900AB7823 /* ReminderViewController+Row.swift */,
+				10AFD2072832C27F00AB7823 /* ReminderViewController+Section.swift */,
 			);
 			path = DetailViewController;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				1014E285282AC7CD00543F6A /* ReminderListViewController.swift in Sources */,
 				1014E281282AC7CD00543F6A /* AppDelegate.swift in Sources */,
 				1014E29B282C408800543F6A /* ReminderListViewController+DataSourse.swift in Sources */,
+				10AFD2082832C27F00AB7823 /* ReminderViewController+Section.swift in Sources */,
 				1014E283282AC7CD00543F6A /* SceneDelegate.swift in Sources */,
 				10AFD203283108DF00AB7823 /* ReminderViewController.swift in Sources */,
 				10AFD2062831178900AB7823 /* ReminderViewController+Row.swift in Sources */,
