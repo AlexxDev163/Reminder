@@ -54,15 +54,11 @@ class ReminderViewController: UICollectionViewController{
         
         switch(section,row) {
         case (_, .header(let title)):
-            var contentConfiguration = cell.defaultContentConfiguration()
-            contentConfiguration.text = title
-            cell.contentConfiguration = contentConfiguration
+            cell.contentConfiguration = headerConfiguration(for: cell, at: row)
         case (.view, _):
-            var contentConfiguration = cell.defaultContentConfiguration()
-            contentConfiguration.text = text(for: row)
-            contentConfiguration.textProperties.font = UIFont.preferredFont(forTextStyle: row.texStyle)
-            contentConfiguration.image = row.image
-            cell.contentConfiguration = contentConfiguration
+            cell.contentConfiguration = defaultConfiguration(for: cell, at: row)
+        case (.title, .editText(let title)):
+            cell.contentConfiguration = titleConfiguration(for: cell, with: title)
         default:
             fatalError("Unexpected combination of section and row.")
         }
@@ -73,6 +69,7 @@ class ReminderViewController: UICollectionViewController{
             var snapshot = Snapshot()
             snapshot.appendSections([.title, .date, .notes])
         snapshot.appendItems([.header(Section.title.name)], toSection: .title)
+        snapshot.appendItems([.header(Section.title.name), .editText(reminder.title)], toSection: .title)
         snapshot.appendItems([.header(Section.date.name)], toSection: .date)
         snapshot.appendItems([.header(Section.notes.name)], toSection: .notes)
             dataSource.apply(snapshot)
@@ -92,20 +89,5 @@ class ReminderViewController: UICollectionViewController{
             fatalError("Unable to find matching section")
         }
         return section
-    }
-    
-    func text( for row: Row) -> String?{
-        switch row {
-        case .viewDate:
-            return reminder.dueDate.dayText
-        case .viewNotes :
-            return reminder.notes
-        case . viewTime:
-            return reminder.dueDate.formatted(date: .omitted, time: .shortened)
-        case .viewTitle:
-            return reminder.title
-        default:
-            return nil
-        }
     }
 }
