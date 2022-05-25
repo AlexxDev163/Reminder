@@ -16,7 +16,7 @@ extension ReminderViewController {
         return contentConfiguration
     }
     
-    func headerConfiguration(for cell: UICollectionViewListCell, at row: Row) -> UIListContentConfiguration{
+    func headerConfiguration(for cell: UICollectionViewListCell, with title: String) -> UIListContentConfiguration{
         var contentConfiguration = cell.defaultContentConfiguration()
         contentConfiguration.text = title
         return contentConfiguration

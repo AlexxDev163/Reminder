@@ -30,6 +30,7 @@ class ReminderViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
         dataSource = DataSourse(collectionView: collectionView) {(collectionView:UICollectionView, indexPath: IndexPath, itemIdentifier: Row) in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
@@ -49,12 +50,12 @@ class ReminderViewController: UICollectionViewController{
         }
     }
         
-    func cellRegistrationHandler(cell: UICollectionViewListCell, insexPath: IndexPath, row: Row)  {
-        let section = section(for: insexPath)
+    func cellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, row: Row)  {
+        let section = section(for: indexPath)
         
         switch(section,row) {
         case (_, .header(let title)):
-            cell.contentConfiguration = headerConfiguration(for: cell, at: row)
+            cell.contentConfiguration = headerConfiguration(for: cell, with: title)
         case (.view, _):
             cell.contentConfiguration = defaultConfiguration(for: cell, at: row)
         case (.title, .editText(let title)):
@@ -68,7 +69,6 @@ class ReminderViewController: UICollectionViewController{
     private func updateSnapshotForEditing() {
             var snapshot = Snapshot()
             snapshot.appendSections([.title, .date, .notes])
-        snapshot.appendItems([.header(Section.title.name)], toSection: .title)
         snapshot.appendItems([.header(Section.title.name), .editText(reminder.title)], toSection: .title)
         snapshot.appendItems([.header(Section.date.name)], toSection: .date)
         snapshot.appendItems([.header(Section.notes.name)], toSection: .notes)
@@ -78,7 +78,6 @@ class ReminderViewController: UICollectionViewController{
     private func updateSnapshotForViewing() {
           var snapshot = Snapshot()
         snapshot.appendSections([.view])
-        snapshot.appendItems([.viewTitle, .viewDate, .viewTime, .viewNotes], toSection: .view)
         snapshot.appendItems([.header(""), .viewTitle, .viewDate, .viewTime, .viewNotes], toSection: .view)
           dataSource.apply(snapshot)
       }
